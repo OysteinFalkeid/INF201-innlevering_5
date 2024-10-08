@@ -54,14 +54,17 @@ print('e-mail: eirik.mentyjarvi@nmbu.no')
 print()                  
 
 import numpy as np # henter numpy til å brukes i oppgavene
+from typing import Union
+from typing import Optional
 
+print('----------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 
 # Task 0: Warmup exercise (0 points)
 # In this exercise, you will implement two functions that perform vector addition. 
 # A vector can be represented as a list of numbers in Python (e.g., [1, 2, 3]).
 
-# Define a function called inplace_add_vectors(vec1, vec2):
+# 1 Define a function called inplace_add_vectors(vec1, vec2):
 
 # 1 This function should add the corresponding elements of vec2 to vec1.
 # After calling this function, vec1 should be modified to hold the sum of the two vectors.
@@ -90,14 +93,39 @@ import numpy as np # henter numpy til å brukes i oppgavene
 print('Task 0: Warmup exercise (0 points)')
 print()
 
+def inplace_add_vectors(vec1: list[Union[int, float]] = [], vec2: list[Union[int, float]] = []) -> None:
+    if len(vec1) == len(vec2):
+        for i in range(len(vec1)):
+            vec1[i] = vec1[i] + vec2[i]
+    else:
+        print('vectors of diferent length')
 
-
-
-
-
-
-
+def add_vectors(vec1: list[Union[int, float]] = [], vec2: list[Union[int, float]] = []) -> Optional[list[Union[int, float]]]:
+    if len(vec1) == len(vec2):
+        vec3 = vec1.copy()
+        for i in range(len(vec1)):
+            vec3[i] = vec1[i] + vec2[i]
+        return vec3
+    else:
+        print('vectors of diferent length')
+        return None
+    
+print('1 Define a function called inplace_add_vectors(vec1, vec2):')
+vector1 = [1,2,3]
+vector2 = [4,5,6]
+inplace_add_vectors(vector1, vector2)
+print(vector1)
 print()
+
+print('2 Define a function called add_vectors(vec1, vec2):')
+vector1 = [1,2,3]
+vector2 = [4,5,6]
+vector3 = add_vectors(vector1, vector2)
+print(vector1)
+print(vector3)
+print()
+
+print('----------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 # Task 1: Matrix operations (2 points)
 
@@ -129,14 +157,17 @@ print()
 print('Task 1: Matrix operations (2 points)')
 print()
 
+shape = (5000, 5000)
+matrix = np.random.randint(0, 100, shape)
+
+print(matrix)
 
 
 
 
 
 
-
-print()
+print('----------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 
 # Task 2: Stencil matrix (3 points)
@@ -168,7 +199,7 @@ print()
 
 
 
-print()
+print('----------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 
 # Task 3: Challenge exercise (0 points)
@@ -189,4 +220,4 @@ print()
 
 
 
-print()
+print('----------------------------------------------------------------')
