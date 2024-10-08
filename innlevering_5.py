@@ -157,8 +157,8 @@ print('----------------------------------------------------------------')
 print('Task 1: Matrix operations (2 points)')
 print()
 
-shape = (50, 50)
-matrix = np.random.randint(0, 100, shape)
+shape = (5000, 5000)
+matrix = np.random.randint(0, 100, shape).tolist()
 
 def mean(matr: list[list[Union[int, float]]]) -> Union[int, float]:
     return sum(matr) / (len(matr)**2)
@@ -169,7 +169,7 @@ def variance(matr: list[list[Union[int, float]]]) -> Union[int, float]:
     for row in matr:
         for col in row:
             sum += (float(col)-mean_value)**2
-    return sum / len(matr)
+    return sum / (len(matr)**2)
     
 
 def sum(matr: list[list[Union[int, float]]]) -> Union[int, float]:
@@ -179,19 +179,18 @@ def sum(matr: list[list[Union[int, float]]]) -> Union[int, float]:
             sum += col
     return sum
 
-def multiply(matr: list[list[Union[int, float]]], val: Union[int, float]):
+def multiply(matr: list[list[Union[int, float]]], val: Union[int, float]) -> list[list[Union[int, float]]]:
     mul_matr = matr.copy()
     for i, row in enumerate(matr):
         for j, col in enumerate(row):
             mul_matr[i][j] = col * val
     return mul_matr
             
-            
-print(matrix)
-print(mean(matrix))
-print(multiply(matrix, 2))
-print(variance(matrix))
-print(np.var(matrix))
+
+print(f'the mean value is {mean(matrix)}')
+print('the matrix multiplied is')
+print(np.asarray(multiply(matrix, 2)))
+print(f'the variance is {variance(matrix)} and this value is equal to the numpy variance {np.var(matrix)}')
 
 
 print('----------------------------------------------------------------')
@@ -218,6 +217,37 @@ print('----------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 print('Task 2: Stencil matrix (3 points)')
 print()
+
+shape = 50
+matrix = [[0 for i in range(shape)] for j in range(shape)]
+
+for i in range(shape):
+    for j in range(shape):
+        if i is j:
+            matrix[i][j] = -2
+        elif j-1 is i or j+1 is i:
+            matrix[i][j] = 1
+        else:
+            matrix[i][j] = 0
+
+i = 0
+vector = np.random.rand(shape)
+
+matrix = np.asarray(matrix)
+vector = np.asarray(vector)
+
+
+while i < 100:
+    vector = np.dot(matrix, vector)/np.linalg.norm(vector)
+    i += 1
+
+eigenvalue = abs(np.dot(np.transpose(vector), np.dot(matrix, vector))/np.dot(np.transpose(vector), vector))
+
+print(eigenvalue)
+    
+Lambda, V = np.linalg.eig(matrix)
+
+print(max(abs(Lambda)))
 
 
 
