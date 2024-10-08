@@ -8,3 +8,15 @@ e-mail: oystein.falkeid@nmbu.no
 Eirik Mentyjaervi
 e-mail: eirik.mentyjarvi@nmbu.no
 
+Task 0: Warmup exercise (0 points)
+
+
+Task 1: Matrix operations (2 points)
+
+
+Task 2: Stencil matrix (3 points)
+
+
+Task 3: Challenge exercise (0 points)
+
+
