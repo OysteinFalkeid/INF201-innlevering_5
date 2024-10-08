@@ -157,14 +157,41 @@ print('----------------------------------------------------------------')
 print('Task 1: Matrix operations (2 points)')
 print()
 
-shape = (5000, 5000)
+shape = (50, 50)
 matrix = np.random.randint(0, 100, shape)
 
+def mean(matr: list[list[Union[int, float]]]) -> Union[int, float]:
+    return sum(matr) / (len(matr)**2)
+
+def variance(matr: list[list[Union[int, float]]]) -> Union[int, float]:
+    sum = 0.0
+    mean_value = mean(matr)
+    for row in matr:
+        for col in row:
+            sum += (float(col)-mean_value)**2
+    return sum / len(matr)
+    
+
+def sum(matr: list[list[Union[int, float]]]) -> Union[int, float]:
+    sum = 0
+    for row in matr:
+        for col in row:
+            sum += col
+    return sum
+
+def multiply(matr: list[list[Union[int, float]]], val: Union[int, float]):
+    mul_matr = matr.copy()
+    for i, row in enumerate(matr):
+        for j, col in enumerate(row):
+            mul_matr[i][j] = col * val
+    return mul_matr
+            
+            
 print(matrix)
-
-
-
-
+print(mean(matrix))
+print(multiply(matrix, 2))
+print(variance(matrix))
+print(np.var(matrix))
 
 
 print('----------------------------------------------------------------')
@@ -191,10 +218,6 @@ print('----------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 print('Task 2: Stencil matrix (3 points)')
 print()
-
-
-
-
 
 
 
