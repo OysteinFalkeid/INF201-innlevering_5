@@ -108,7 +108,7 @@ print('Task 1: Matrix operations (2 points)')
 print()
 
 shape = (5000, 5000)
-matrix = np.random.randint(0, 100, shape).tolist()
+matrix = np.random.randint(0, 100, shape)
 
 def mean(matr: list[list[Union[int, float]]]) -> Union[int, float]:
     return sum(matr) / (len(matr)**2)
@@ -121,7 +121,6 @@ def variance(matr: list[list[Union[int, float]]]) -> Union[int, float]:
             sum += (float(col)-mean_value)**2
     return sum / (len(matr)**2)
     
-
 def sum(matr: list[list[Union[int, float]]]) -> Union[int, float]:
     sum = 0
     for row in matr:

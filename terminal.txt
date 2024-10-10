@@ -21,23 +21,23 @@ Task 0: Warmup exercise (0 points)
 ------------------------------------------------------------------------
 Task 1: Matrix operations (2 points)
 
-the mean value is: 49.48733216
+the mean value is: 49.50281516
 
 the matrix multiplied is:
-[[ 88  78 150 ... 194  70 136]
- [102 110  78 ... 160  86 144]
- [172 122 142 ...  28 140  56]
+[[138  36 102 ...  84  90 108]
+ [106 130 182 ...  58 172 192]
+ [166 100  40 ...  76 130  62]
  ...
- [ 96 180 122 ... 126  84  56]
- [ 94  68  38 ...  30 160  74]
- [100  38   0 ... 126  46  50]]
+ [ 32  20 142 ...  58 136  30]
+ [ 42 120  30 ...  52  92   6]
+ [110  40 110 ... 140  48  94]]
 
-the variance is: 3332.6891436881706 
-and this value is equivalent to the numpy variance: 3332.689143703317
+the variance is: 833.5340624617351 
+and this value is equivalent to the numpy variance: 833.5340624748745
 ------------------------------------------------------------------------
 Task 2: Stencil matrix (3 points)
 
-eigenvalue calculated with for loop is: 3.985868891202678 
+eigenvalue calculated with for loop is: 3.9817992757721345 
 and the eigenvalue calculated with numpy is: 3.996206657474087
 ------------------------------------------------------------------------
 Task 3: Challenge exercise (0 points)
