@@ -57,7 +57,7 @@ import numpy as np # henter numpy til å brukes i oppgavene
 from typing import Union
 from typing import Optional
 
-print('----------------------------------------------------------------')
+print('------------------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 
 # Task 0: Warmup exercise (0 points)
@@ -125,7 +125,7 @@ print(vector1)
 print(vector3)
 print()
 
-print('----------------------------------------------------------------')
+print('------------------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 # Task 1: Matrix operations (2 points)
 
@@ -187,32 +187,42 @@ def multiply(matr: list[list[Union[int, float]]], val: Union[int, float]) -> lis
     return mul_matr
             
 
-print(f'the mean value is {mean(matrix)}')
-print('the matrix multiplied is')
+print(f'the mean value is: {mean(matrix)}')
+print()
+print('the matrix multiplied is:')
 print(np.asarray(multiply(matrix, 2)))
-print(f'the variance is {variance(matrix)} and this value is equal to the numpy variance {np.var(matrix)}')
+print()
+print(f'the variance is: {variance(matrix)} \nand this value is equivalent to the numpy variance: {np.var(matrix)}')
 
 
-print('----------------------------------------------------------------')
+print('------------------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 
 # Task 2: Stencil matrix (3 points)
 # Create a stencil matrix of the form
 
 
-# with 50 by 50 entries. That is, create a matrix with diagonal entries of -2 and off-diagonal entries (the entries left and right of the diagonal) of 1. The first row is 
+# with 50 by 50 entries. That is, create a matrix with diagonal entries of -2 and off-diagonal entries 
+# (the entries left and right of the diagonal) of 1. The first row is 
 # , i.e., the left off-diagonal entry is missing. The last row is 
 # , i.e., the right off-diagonal entry is missing.
 
-# We now want to compute the dominant eigenvalue of this matrix. An eigenvalue tells you how a matrix will change certain vectors through multiplication. If you do not know what an eigenvalue is, that is no problem and this knowledge is not required to solve this task. If you wish to get a better understanding, you can watch this videoLinks to an external site. and the videos in this series, but this is really not required. To compute the dominant eigenvalue, take a random vector 
+# We now want to compute the dominant eigenvalue of this matrix. 
+# An eigenvalue tells you how a matrix will change certain vectors through multiplication. 
+# If you do not know what an eigenvalue is, that is no problem and this knowledge is not required 
+# to solve this task. If you wish to get a better understanding, you can watch this videoLinks 
+# to an external site. and the videos in this series, but this is really not required. 
+# To compute the dominant eigenvalue, take a random vector 
 #  with 50 entries and multiply it by 
 # , leading to 
 # . Set 
 #  and repeat the process. That is, with our new 
 # , compute 
 # , set 
-#  and proceed. You can use numpy functionality to compute multiplications and norms.  After 100 iterations, print out the value of 
-#  which approximates the dominant eigenvalue. Check the result by computing Lambda, V = np.linalg.eig(A) and inspecting the largest absolute value in Lambda.
+#  and proceed. You can use numpy functionality to compute multiplications and norms.  
+# After 100 iterations, print out the value of 
+#  which approximates the dominant eigenvalue. Check the result by computing Lambda, 
+# V = np.linalg.eig(A) and inspecting the largest absolute value in Lambda.
 
 #-------------------------------------------------------------------------------------------------------------------
 print('Task 2: Stencil matrix (3 points)')
@@ -229,35 +239,25 @@ for i in range(shape):
             matrix[i][j] = 1
         else:
             matrix[i][j] = 0
-
-i = 0
+            
+matrix = np.asarray(matrix)
 vector = np.random.rand(shape)
 
-matrix = np.asarray(matrix)
-vector = np.asarray(vector)
-
-
-while i < 100:
+for i in range(100):
     vector = np.dot(matrix, vector)/np.linalg.norm(vector)
-    i += 1
 
 eigenvalue = abs(np.dot(np.transpose(vector), np.dot(matrix, vector))/np.dot(np.transpose(vector), vector))
-
-print(eigenvalue)
-    
 Lambda, V = np.linalg.eig(matrix)
 
-print(max(abs(Lambda)))
+print(f'eigenvalue calculated with for loop is: {eigenvalue} \nand the eigenvalue calculated with numpy is: {max(abs(Lambda))}')
 
-
-
-
-print('----------------------------------------------------------------')
+print('------------------------------------------------------------------------')
 #-------------------------------------------------------------------------------------------------------------------
 
 # Task 3: Challenge exercise (0 points)
 # Try to rewrite task 2 so that you never have to store the matrix 
-# . For this, write your own function multiply_efficient(v), which computes the matrix-vector product without requiring the matrix. To write this function, think about the operations that will be performed when computing 
+# . For this, write your own function multiply_efficient(v), which computes the matrix-vector product 
+# without requiring the matrix. To write this function, think about the operations that will be performed when computing 
 #  and check if some of these operations can be left out for our choice of 
 # . Hint: A lot of entries in 
 #  are zero!
@@ -273,4 +273,4 @@ print()
 
 
 
-print('----------------------------------------------------------------')
+print('------------------------------------------------------------------------')
